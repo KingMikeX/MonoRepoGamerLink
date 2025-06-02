@@ -23,7 +23,7 @@
       "dest": "apps/webapp/$1"
     }
   ],
-  "installCommand": "npm install:all",
+  "installCommand": "npm install",
   "buildCommand": "npm run build",
   "outputDirectory": "apps/webapp/.next"
 }
