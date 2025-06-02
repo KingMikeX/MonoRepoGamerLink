@@ -1,5 +1,4 @@
 {
-    "$schema": "https://vercel.com/schemas/project/config.json",
     "builds": [
       {
         "src": "apps/Backend/src/main.py",
