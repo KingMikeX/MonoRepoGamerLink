@@ -3,11 +3,16 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+      "outputs": [
+        "dist/**",
+        ".next/**",
+        "!.next/cache/**",
+        "apps/Backend/.venv/**"
+      ]
     },
     "backend#build": {
-      "dependsOn": ["^build"],
-      "outputs": []
+      "outputs": [],
+      "dependsOn": ["^build"]
     },
     "lint": {
       "dependsOn": ["^lint"]
@@ -15,10 +20,6 @@
     "dev": {
       "cache": false,
       "persistent": true
-    },
-    "install:python": {
-      "cache": false,
-      "outputs": ["apps/Backend/.venv/**"]
     }
   }
 }
