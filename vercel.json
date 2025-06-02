@@ -1,0 +1,28 @@
+{
+    "$schema": "https://vercel.com/schemas/project/config.json",
+    "builds": [
+      {
+        "src": "apps/Backend/src/main.py",
+        "use": "@vercel/python",
+        "config": {
+          "pythonVersion": "3.9"
+        }
+      },
+      {
+        "src": "apps/webapp/package.json",
+        "use": "@vercel/next"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/api/(.)",
+        "dest": "apps/Backend/src/main.py"
+      },
+      {
+        "src": "/(.)",
+        "dest": "apps/webapp/$1"
+      }
+    ],
+    "installCommand": "npm install",
+    "buildCommand": "npm run build"
+  }
