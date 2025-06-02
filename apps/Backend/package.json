@@ -3,8 +3,8 @@
     "version": "1.0.0",
     "private": true,
     "scripts": {
-    "install:python": "python3 -m venv .venv && . .venv/bin/activate && python3 -m pip install -r src/requirements.txt",
-    "dev:python": ". .venv/bin/activate && uvicorn src.main:app --host 0.0.0.0 --port 8000",
-    "build:python": "echo 'No specific build step for Python FastAPI, dependencies installed via install:python'"
+      "install:python": "python3 -m venv .venv && . .venv/bin/activate && python3 -m pip install -r src/requirements.txt",
+      "dev": "cd src && . ../.venv/bin/activate && uvicorn main:app --host 127.0.0.1 --port 8000 --reload",
+      "build": "echo 'FastAPI backend build step for Vercel. No compilation needed, source files are enough.'"
     }
   }
