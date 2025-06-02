@@ -1,0 +1,25 @@
+{
+    "builds": [
+      {
+        "src": "Backend/src/main.py",
+        "use": "@vercel/python"
+      },
+      {
+        "src": "webapp/package.json",
+        "use": "@vercel/next",
+        "config": {
+          "installCommand": "npm install && pipx install -r Backend/src/requirements.txt"
+        }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/api/(.*)",
+        "dest": "Backend/src/main.py"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "webapp/$1"
+      }
+    ]  
+  }
