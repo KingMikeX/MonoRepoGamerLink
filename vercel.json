@@ -24,6 +24,6 @@
     }
   ],
   "installCommand": "npm install",
-  "buildCommand": "npm run build",
+  "buildCommand": "turbo run build",
   "outputDirectory": "apps/webapp/.next"
 }
