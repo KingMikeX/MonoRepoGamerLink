@@ -1,36 +1,28 @@
 {
-  "$schema": "https://vercel.com/schemas/project/config.json",
-  "buildCommand": "npm run build",
-  "installCommand": "npm install",
-  "devCommand": "npm run dev",
-  "cleanUrls": true,
-
-  "builds": [
-    {
-      "src": "apps/Backend/src/main.py",
-      "use": "@vercel/python@latest",
-      "config": {
-        "pythonVersion": "3.12.2"
+    "$schema": "https://vercel.com/schemas/project/config.json",
+    "builds": [
+      {
+        "src": "apps/Backend/src/main.py",
+        "use": "@vercel/python",
+        "config": {
+          "pythonVersion": "3.9"
+        }
+      },
+      {
+        "src": "apps/webapp/package.json",
+        "use": "@vercel/next"
       }
-    },
-    {
-      "src": "apps/webapp/package.json",
-      "use": "@vercel/next@latest"
-    }
-  ],
-
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "apps/Backend/src/main.py"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "apps/webapp/$1"
-    }
-  ],
-
-  "github": {
-    "silent": true
+    ],
+    "routes": [
+      {
+        "src": "/api/(.)",
+        "dest": "apps/Backend/src/main.py"
+      },
+      {
+        "src": "/(.)",
+        "dest": "apps/webapp/$1"
+      }
+    ],
+    "installCommand": "npm install",
+    "buildCommand": "npm run build"
   }
-}
