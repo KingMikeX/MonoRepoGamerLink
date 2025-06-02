@@ -1,25 +1,29 @@
 {
-    "builds": [
-      {
-        "src": "Backend/src/main.py",
-        "use": "@vercel/python"
-      },
-      {
-        "src": "webapp/package.json",
-        "use": "@vercel/next",
-        "config": {
-          "installCommand": "npm install && pipx install -r Backend/src/requirements.txt"
-        }
+  "$schema": "https://vercel.com/schemas/project/config.json",
+  "builds": [
+    {
+      "src": "apps/Backend/src/main.py",
+      "use": "@vercel/python",
+      "config": {
+        "pythonVersion": "3.9"
       }
-    ],
-    "routes": [
-      {
-        "src": "/api/(.*)",
-        "dest": "Backend/src/main.py"
-      },
-      {
-        "src": "/(.*)",
-        "dest": "webapp/$1"
-      }
-    ]  
-  }
+    },
+    {
+      "src": "apps/webapp/package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "apps/Backend/src/main.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "apps/webapp/$1"
+    }
+  ],
+  "installCommand": "npm install",
+  "buildCommand": "npm run build",
+  "outputDirectory": "apps/webapp/.next"
+}
